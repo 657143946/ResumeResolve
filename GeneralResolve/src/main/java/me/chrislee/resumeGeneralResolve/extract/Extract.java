@@ -7,5 +7,8 @@ import java.util.Map;
  * 提取器接口
  */
 public interface Extract {
+    /**
+     * 提取信息
+     */
     public Map<String, Object> extract(String content);
 }
