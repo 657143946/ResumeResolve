@@ -6,7 +6,7 @@ import java.util.Map;
  * @author ChrisLee
  *         分段接口，将文档按照配置文件来进行分段
  */
-public interface Separator {
+public interface Separate {
     /**
      * 将content分段
      */
