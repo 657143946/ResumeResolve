@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * Created by ChrisLee.
+ * 内建的文本预处理器
  */
 public class BuildinPreprocess {
     private final static Logger log = Logger.getLogger(BuildinPreprocess.class);
