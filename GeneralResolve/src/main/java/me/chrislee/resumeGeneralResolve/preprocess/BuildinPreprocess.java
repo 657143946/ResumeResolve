@@ -1,5 +1,7 @@
 package me.chrislee.resumeGeneralResolve.preprocess;
 
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +9,8 @@ import java.util.Map;
  * Created by ChrisLee.
  */
 public class BuildinPreprocess {
+    private final static Logger log = Logger.getLogger(BuildinPreprocess.class);
+
     /**
      * 内建预处理器
      * 去除HTML标签（换行和空格会等效转换, span会转为空格）
@@ -14,6 +18,7 @@ public class BuildinPreprocess {
     public static final Preprocess removeHtml = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("去除HTML标签");
             content = content.replaceAll("<p[^<>]*>", "\n");  // p标签换成换行
             content = content.replaceAll("</p[^<>]*>", "\n");  // p标签换成换行
             content = content.replaceAll("</span[^<>]*>", " ");  // span标签换成空格
@@ -40,6 +45,7 @@ public class BuildinPreprocess {
 
         @Override
         public String preprocess(String content) {
+            log.info("去除诡异字符");
             for (String key : strangeCharRegex2NormalMappingTalbe.keySet()) {
                 content = content.replaceAll(key, strangeCharRegex2NormalMappingTalbe.get(key));
             }
@@ -54,6 +60,7 @@ public class BuildinPreprocess {
     public static final Preprocess removeJs = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("去除JS代码");
             content = content.replaceAll("<script", "~~<script").replaceAll("</script>", "</script>~~");
             content = content.replaceAll("~~[^~]*~~", "");
             return content;
@@ -67,6 +74,7 @@ public class BuildinPreprocess {
     public static final Preprocess removeCss = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("去除CSS代码");
             content = content.replaceAll("<style", "~~<style").replaceAll("</style>", "</style>~~");
             content = content.replaceAll("~~[^~]*~~", "");
             return content;
@@ -104,6 +112,7 @@ public class BuildinPreprocess {
         }};
         @Override
         public String preprocess(String content) {
+            log.info("中文标点符号转换成英文标点符号");
             for(String key: symbolMappingTable.keySet()){
                 content = content.replaceAll(key, symbolMappingTable.get(key));
             }
@@ -118,6 +127,7 @@ public class BuildinPreprocess {
     public final static Preprocess removeUnnecessaryLines = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("将换行符前后的空字符全部变为单独的换行符");
             return content.replaceAll("\\n\\s+", "\n");
         }
     };
@@ -129,6 +139,7 @@ public class BuildinPreprocess {
     public final static Preprocess fixWrongLine = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("将读出来的文本中出现的错误换行全部修复");
             // :换错行or多余空格
             content = content.replaceAll("\\s*: {4,}", ":无");
             content = content.replaceAll("\\s*:\\s*", ":");
@@ -169,6 +180,7 @@ public class BuildinPreprocess {
     public final static Preprocess trim = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("去除文本首尾空字符");
             return content.trim();
         }
     };
