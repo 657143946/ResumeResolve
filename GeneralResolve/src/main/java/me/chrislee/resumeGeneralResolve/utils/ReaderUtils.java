@@ -8,13 +8,16 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * @author ChrisLee
- *         Created by ChrisLee.
- *         读文件工具类
+ * Created by ChrisLee.
+ * 读文件工具类
  */
 public class ReaderUtils {
     /**
      * 加载资源文件
+     *
+     * @param filePath String 需要加载的资源文件相对路径（相对于resources下面）
+     * @return Properties 加载好的资源
+     * @throws IOException
      */
     public static Properties loadProperties(String filePath) throws IOException {
         if (filePath == null) {
