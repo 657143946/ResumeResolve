@@ -1,4 +1,4 @@
-package me.chrislee.resumeGeneralResolve.paragraph;
+package me.chrislee.resumeGeneralResolve.block;
 
 import java.util.Map;
 
