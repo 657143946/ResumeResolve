@@ -1,7 +1,6 @@
 package me.chrislee.resumeGeneralResolve.read;
 
 import org.apache.log4j.Logger;
-import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -11,7 +10,10 @@ import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by ChrisLee.
@@ -19,8 +21,15 @@ import java.io.*;
  */
 public class TikaReader implements Read {
     private Logger log = Logger.getLogger(this.getClass());
+
     /**
-     * tika读取文件
+     * 使用tika读取文档内容
+     *
+     * @param file File 要读取的文件
+     * @return String 读取到的文件内容，文件一定要小于10M
+     * @throws IOException
+     * @throws TikaException
+     * @throws SAXException
      */
     public String read(File file) throws IOException, TikaException, SAXException {
         /**
@@ -50,6 +59,12 @@ public class TikaReader implements Read {
         return handler.toString();
     }
 
+    /**
+     * 实现Read接口
+     *
+     * @param file 要读取的文件
+     * @return 读取到的内容
+     */
     @Override
     public String getContent(File file) {
         log.info("读取文件： " + file.getAbsoluteFile());
@@ -69,7 +84,7 @@ public class TikaReader implements Read {
         return content;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Read read = new TikaReader();
         File file = new File("C:\\Users\\TEMP.XZ-20131014UNWI.011\\Desktop\\智联张守兵_高级JAVA开发..._中文_20150226_65549432.doc");
         System.out.println(read.getContent(file));
