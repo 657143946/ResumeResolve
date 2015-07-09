@@ -13,7 +13,7 @@ public class Chain<T> {
     /**
      * 在流水线最后添加工序
      *
-     * @param process
+     * @param process T泛型 工序
      */
     public void add(T process) {
         this.chain.add(process);
@@ -22,8 +22,8 @@ public class Chain<T> {
     /**
      * 流水线中指定位置插入工序, 如果越界了，则在流水线末尾添加工序
      *
-     * @param index
-     * @param process
+     * @param index int 要插入的顺序
+     * @param process T泛型 工序
      */
     public void insert(int index, T process) {
         if (index > this.chain.size() || index < 0) {
@@ -36,7 +36,7 @@ public class Chain<T> {
     /**
      * 流水线中删除指定的工序, 如果没有这个工序则不做任何操作
      *
-     * @param index
+     * @param index int 被删除的工序顺序
      */
     public void delete(int index) {
         if (0 <= index && index < this.chain.size()) {
@@ -47,7 +47,7 @@ public class Chain<T> {
     /**
      * 流水线中删除指定的工序, 如果没有这个工序则不做任何操作
      *
-     * @param process
+     * @param process T泛型 工序
      */
     public void delete(T process) {
         this.chain.remove(process);
@@ -56,8 +56,8 @@ public class Chain<T> {
     /**
      * 流水线中设置某工序的工作，如果不存在该工序，则在工程最后新增该工序
      *
-     * @param index
-     * @param process
+     * @param index int 被替换的工序顺序
+     * @param process T泛型 工序
      */
     public void setOrAdd(int index, T process) {
         if (0 <= index && index < this.chain.size()) {
