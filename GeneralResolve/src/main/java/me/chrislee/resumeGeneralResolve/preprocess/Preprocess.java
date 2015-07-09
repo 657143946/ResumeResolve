@@ -1,4 +1,4 @@
-package me.chrislee.resumeGeneralResolve.format;
+package me.chrislee.resumeGeneralResolve.preprocess;
 
 /**
  * Created by ChrisLee.
