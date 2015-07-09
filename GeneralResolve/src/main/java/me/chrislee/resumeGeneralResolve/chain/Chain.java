@@ -1,5 +1,6 @@
 package me.chrislee.resumeGeneralResolve.chain;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by ChrisLee.
  * 流水线（对LinkedList的简单封装）
  */
-public class Chain<T> {
+public class Chain<T> implements Iterable<T> {
     private List<T> chain = new LinkedList<>();
 
     /**
@@ -65,5 +66,15 @@ public class Chain<T> {
         } else {
             this.chain.add(process);
         }
+    }
+
+    /**
+     * 实现Iterable接口，可以遍历流水线工序
+     *
+     * @return Iterator<T> linkedList的iterator
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return chain.iterator();
     }
 }
