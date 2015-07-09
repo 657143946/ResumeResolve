@@ -88,6 +88,7 @@ public class BuildinPreprocess {
     public static final Preprocess removeXml = new Preprocess() {
         @Override
         public String preprocess(String content) {
+            log.info("去除XML代码");
             content = content.replaceAll("<xml", "~~<xml").replaceAll("</xml>", "</xml>~~");
             content = content.replaceAll("~~[^~]*~~", "");
             return content;
