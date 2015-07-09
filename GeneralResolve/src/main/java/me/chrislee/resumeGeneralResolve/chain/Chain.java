@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Created by ChrisLee.
- * 流水线
+ * 流水线（对LinkedList的简单封装）
  */
 public class Chain<T> {
     private List<T> chain = new LinkedList<>();
