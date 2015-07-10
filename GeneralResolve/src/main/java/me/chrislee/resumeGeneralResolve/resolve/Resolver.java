@@ -1,8 +1,8 @@
 package me.chrislee.resumeGeneralResolve.resolve;
 
+import me.chrislee.resumeGeneralResolve.block.BuildinSeparator;
 import me.chrislee.resumeGeneralResolve.preprocess.Preprocess;
-import me.chrislee.resumeGeneralResolve.paragraph.Separate;
-import me.chrislee.resumeGeneralResolve.paragraph.Separator;
+import me.chrislee.resumeGeneralResolve.block.Separate;
 import me.chrislee.resumeGeneralResolve.preprocess.PreprocessManager;
 import me.chrislee.resumeGeneralResolve.read.Read;
 import me.chrislee.resumeGeneralResolve.read.TikaReader;
@@ -69,7 +69,7 @@ public class Resolver {
         Resolver resolver = new Resolver();
 
         resolver.setRead(new TikaReader());
-        resolver.setSeparate(new Separator());
+        resolver.setSeparate(new BuildinSeparator());
 
         File file = new File("C:\\Users\\TEMP.XZ-20131014UNWI.011\\Desktop\\智联张守兵_高级JAVA开发..._中文_20150226_65549432.doc");
         resolver.resolve(file);
