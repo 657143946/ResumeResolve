@@ -27,6 +27,7 @@ public class PreprocessManager {
         defaultPrecessManager.chain.add(BuildinPreprocess.removeUnnecessaryLines);
         defaultPrecessManager.chain.add(BuildinPreprocess.fixWrongLine);
         defaultPrecessManager.chain.add(BuildinPreprocess.trim);
+        defaultPrecessManager.chain.add(BuildinPreprocess.addFirstLine);
     }
 
 

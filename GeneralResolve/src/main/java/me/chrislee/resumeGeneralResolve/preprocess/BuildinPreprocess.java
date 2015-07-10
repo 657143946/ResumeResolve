@@ -187,6 +187,14 @@ public class BuildinPreprocess {
         }
     };
 
+    public final static Preprocess addFirstLine = new Preprocess() {
+        @Override
+        public String preprocess(String content) {
+            log.info("在整个文本第一个字符添加一个换行");
+            return "\n" + content;
+        }
+    };
+
 
 
 }
